@@ -35,16 +35,21 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
 /* ---- 截图画廊 ---- */
 .shots-block{margin-bottom:34px}.shots-block:last-child{margin-bottom:0}
 .shots-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}.shots-head h3{margin:0;font-size:16px;color:#eaffef}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:14px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:14px;align-items:start}
+.gallery.wide{grid-template-columns:repeat(auto-fit,minmax(380px,1fr))}
 .shot{margin:0;border:1px solid var(--line);background:#071009;display:flex;flex-direction:column;overflow:hidden}
-.shot-holder{aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;background:repeating-linear-gradient(45deg,#08130d 0 10px,#0a1710 10px 20px)}
-.shot.filled .shot-holder{aspect-ratio:auto;padding:0;background:#040906;height:520px}
-.shot img{display:block;width:100%;height:100%;object-fit:contain}
-.shot.qr-slot.filled .shot-holder{height:auto}
-.shot.qr-slot img{height:auto}
+.shot-holder{position:relative;display:flex;align-items:center;justify-content:center;text-align:center;min-height:190px;background:repeating-linear-gradient(45deg,#08130d 0 10px,#0a1710 10px 20px)}
+.shot-link{display:block;width:100%}
+.shot img{display:block;width:100%;height:520px;object-fit:contain;background:#040906}
+.gallery.wide .shot img{height:380px}
+.shot .shot-hint{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:12px;font-size:10px;line-height:1.7;color:#54805f;word-break:break-all}
+.shot.missing .shot-hint{display:flex}
+.shot.missing .shot-link{display:none}
 .shot-hint{font-size:10px;line-height:1.7;color:#54805f;word-break:break-all}
 .shot figcaption{border-top:1px solid var(--line);padding:9px 11px;font-size:11px;color:var(--muted)}
+.zoom-hint{color:#4f7a5c;font-size:10px;margin-left:6px;white-space:nowrap}
 .shot.qr-slot{max-width:200px}
+.shot.qr-slot img{height:auto}
 /* ---- 代码片段（无界面项目） ---- */
 .codesnip{border:1px solid #22683e;background:#020604;overflow:hidden}
 .codesnip-head{padding:9px 13px;border-bottom:1px solid #163b25;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
@@ -79,7 +84,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
 .decisions li:before{content:"▸";position:absolute;left:0;color:var(--green2)}
 .decisions b{color:#d9f7e2;font-weight:700}
 @keyframes blink{50%{opacity:0}}@keyframes pulse{50%{opacity:.2}}@keyframes scan{0%,60%{left:-100%}100%{left:140%}}
-@media(max-width:760px){.navlinks{gap:10px;flex-wrap:wrap;justify-content:flex-end}.navlinks a{font-size:10px}.hero{grid-template-columns:1fr;padding-top:55px;gap:30px;min-height:auto}.ascii-card{max-width:520px}.grid{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.section{padding:38px 0}.shot.filled .shot-holder{height:auto}.shot img{height:auto}.metrics strong{font-size:21px}.nav{padding-inline:5vw}.brand{font-size:12px}.qa-callout{padding:14px}}
+@media(max-width:760px){.navlinks{gap:10px;flex-wrap:wrap;justify-content:flex-end}.navlinks a{font-size:10px}.hero{grid-template-columns:1fr;padding-top:55px;gap:30px;min-height:auto}.ascii-card{max-width:520px}.grid{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}.gallery.wide{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.section{padding:38px 0}.shot img{height:auto}.metrics strong{font-size:21px}.nav{padding-inline:5vw}.brand{font-size:12px}.qa-callout{padding:14px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -179,21 +184,26 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
 
   <section class="section" id="shots">
     <div class="section-head"><span class="num">02 //</span><h2>界面与产物</h2></div>
-    <!-- 截图位已预留：把图片放进仓库 assets/ 目录，文件名与下方 data-src 一致即可自动显示；未提供的会显示占位框。 -->
+    <!-- 图片直接写在 HTML 里，不依赖 JS 动态插入；文件缺失时由 onerror 显示占位框，不会出现破图。点击图片可看原图。 -->
     <div class="panel reveal">
       <div class="shots-block">
         <div class="shots-head"><h3>AI 友人</h3><span class="muted">长期记忆 · 主动对话 · 自我演化</span></div>
         <div class="gallery">
-          <figure class="shot" data-src="assets/ai-friend-1.jpg" data-alt="AI 友人对话界面"><div class="shot-holder"><span class="shot-hint">待补充截图<br>assets/ai-friend-1.jpg</span></div><figcaption>主对话界面：日常语气、表情包与上下文延续</figcaption></figure>
-          <figure class="shot" data-src="assets/ai-friend-2.jpg" data-alt="四层消息控制生效"><div class="shot-holder"><span class="shot-hint">待补充截图<br>assets/ai-friend-2.jpg</span></div><figcaption>四层消息控制：底部可见「静默 22:00–7:00 · 间隔 2–30 分钟」</figcaption></figure>
-          <figure class="shot" data-src="assets/ai-friend-3.jpg" data-alt="长期记忆面板"><div class="shot-holder"><span class="shot-hint">待补充截图<br>assets/ai-friend-3.jpg</span></div><figcaption>长期记忆：它记住的关于你的事 + 历史对话自动摘要</figcaption></figure>
-          <figure class="shot" data-src="assets/ai-friend-4.jpg" data-alt="自我认知修改面板"><div class="shot-holder"><span class="shot-hint">待补充截图<br>assets/ai-friend-4.jpg</span></div><figcaption>「她的变化」：模型根据经历自己改写对自己的认知</figcaption></figure>
+          <figure class="shot"><div class="shot-holder"><span class="shot-hint">图片缺失<br>assets/ai-friend-1.jpg</span><a class="shot-link" href="assets/ai-friend-1.jpg" target="_blank" rel="noreferrer"><img src="assets/ai-friend-1.jpg" alt="AI 友人主对话界面" loading="lazy" decoding="async" onerror="this.closest('.shot').classList.add('missing')"></a></div><figcaption>主对话界面：日常语气、表情包与上下文延续<span class="zoom-hint">⤢ 看大图</span></figcaption></figure>
+          <figure class="shot"><div class="shot-holder"><span class="shot-hint">图片缺失<br>assets/ai-friend-2.jpg</span><a class="shot-link" href="assets/ai-friend-2.jpg" target="_blank" rel="noreferrer"><img src="assets/ai-friend-2.jpg" alt="四层消息控制生效" loading="lazy" decoding="async" onerror="this.closest('.shot').classList.add('missing')"></a></div><figcaption>四层消息控制：底部可见「静默 22:00–7:00 · 间隔 2–30 分钟」<span class="zoom-hint">⤢ 看大图</span></figcaption></figure>
+          <figure class="shot"><div class="shot-holder"><span class="shot-hint">图片缺失<br>assets/ai-friend-3.jpg</span><a class="shot-link" href="assets/ai-friend-3.jpg" target="_blank" rel="noreferrer"><img src="assets/ai-friend-3.jpg" alt="长期记忆面板" loading="lazy" decoding="async" onerror="this.closest('.shot').classList.add('missing')"></a></div><figcaption>长期记忆：它记住的关于你的事 + 历史对话自动摘要<span class="zoom-hint">⤢ 看大图</span></figcaption></figure>
+          <figure class="shot"><div class="shot-holder"><span class="shot-hint">图片缺失<br>assets/ai-friend-4.jpg</span><a class="shot-link" href="assets/ai-friend-4.jpg" target="_blank" rel="noreferrer"><img src="assets/ai-friend-4.jpg" alt="自我认知修改面板" loading="lazy" decoding="async" onerror="this.closest('.shot').classList.add('missing')"></a></div><figcaption>「她的变化」：模型根据经历自己改写对自己的认知<span class="zoom-hint">⤢ 看大图</span></figcaption></figure>
         </div>
       </div>
       <div class="shots-block">
         <div class="shots-head"><h3>网吧管理系统</h3><span class="muted">Python · MySQL · 命令行交互</span></div>
-        <p class="muted" style="margin:0 0 12px">这个项目是纯代码、没有可视化界面，所以不贴截图，直接贴一段真实代码：商品下单的事务处理——参数化查询、库存校验、扣减与出错回滚。完整源码在 GitHub 仓库。</p>
-        <div class="codesnip">
+        <p class="muted" style="margin:0 0 12px">这是个命令行程序、没有图形界面，所以不贴界面截图，改贴课程设计里的三张设计图（数据库设计、模块划分、数据流），再附一段真实代码。</p>
+        <div class="gallery wide">
+          <figure class="shot"><div class="shot-holder"><span class="shot-hint">图片缺失<br>assets/netcafe-1.png</span><a class="shot-link" href="assets/netcafe-1.png" target="_blank" rel="noreferrer"><img src="assets/netcafe-1.png" alt="网吧管理系统 ER 图" loading="lazy" decoding="async" onerror="this.closest('.shot').classList.add('missing')"></a></div><figcaption>ER 图：会员、电脑、上网记录、充值记录、商品、订单等 8 张业务表的主外键与关系基数<span class="zoom-hint">⤢ 看大图</span></figcaption></figure>
+          <figure class="shot"><div class="shot-holder"><span class="shot-hint">图片缺失<br>assets/netcafe-2.png</span><a class="shot-link" href="assets/netcafe-2.png" target="_blank" rel="noreferrer"><img src="assets/netcafe-2.png" alt="系统功能模块图" loading="lazy" decoding="async" onerror="this.closest('.shot').classList.add('missing')"></a></div><figcaption>功能模块图：从需求拆出的 7 个模块，以及每个模块下的具体功能点<span class="zoom-hint">⤢ 看大图</span></figcaption></figure>
+          <figure class="shot"><div class="shot-holder"><span class="shot-hint">图片缺失<br>assets/netcafe-3.png</span><a class="shot-link" href="assets/netcafe-3.png" target="_blank" rel="noreferrer"><img src="assets/netcafe-3.png" alt="一级数据流图 DFD" loading="lazy" decoding="async" onerror="this.closest('.shot').classList.add('missing')"></a></div><figcaption>一级数据流图（DFD）：管理员 / 会员两个外部实体与 8 个数据存储之间的数据流向<span class="zoom-hint">⤢ 看大图</span></figcaption></figure>
+        </div>
+        <div class="codesnip" style="margin-top:14px">
           <div class="codesnip-head"><span>JERRY_GAME/sales.py</span><span>create_order() · 节选</span></div>
           <pre>cursor.execute(
     """
@@ -245,9 +255,9 @@ conn.commit()</pre>
       <div class="shots-block">
         <div class="shots-head"><h3>勋章待办</h3><span class="muted">微信小程序 · PRD · 真实用户验证</span></div>
         <div class="gallery">
-          <figure class="shot" data-src="assets/medal-1.jpg" data-alt="勋章墙与待办任务"><div class="shot-holder"><span class="shot-hint">待补充截图<br>assets/medal-1.jpg</span></div><figcaption>首页：勋章墙与待办任务（难度分级、截止时间）</figcaption></figure>
-          <figure class="shot" data-src="assets/medal-2.jpg" data-alt="勋章详情弹窗"><div class="shot-holder"><span class="shot-hint">待补充截图<br>assets/medal-2.jpg</span></div><figcaption>勋章详情：动态稀有度（专注之章 · 稀有）</figcaption></figure>
-          <figure class="shot" data-src="assets/medal-3.png" data-alt="小程序码海报"><div class="shot-holder"><span class="shot-hint">待补充图片<br>assets/medal-3.png</span></div><figcaption>小程序码：已上线，扫码可直接体验</figcaption></figure>
+          <figure class="shot"><div class="shot-holder"><span class="shot-hint">图片缺失<br>assets/medal-1.jpg</span><a class="shot-link" href="assets/medal-1.jpg" target="_blank" rel="noreferrer"><img src="assets/medal-1.jpg" alt="勋章墙与待办任务" loading="lazy" decoding="async" onerror="this.closest('.shot').classList.add('missing')"></a></div><figcaption>首页：勋章墙与待办任务（难度分级、截止时间）<span class="zoom-hint">⤢ 看大图</span></figcaption></figure>
+          <figure class="shot"><div class="shot-holder"><span class="shot-hint">图片缺失<br>assets/medal-2.jpg</span><a class="shot-link" href="assets/medal-2.jpg" target="_blank" rel="noreferrer"><img src="assets/medal-2.jpg" alt="勋章详情弹窗" loading="lazy" decoding="async" onerror="this.closest('.shot').classList.add('missing')"></a></div><figcaption>勋章详情：动态稀有度（专注之章 · 稀有）<span class="zoom-hint">⤢ 看大图</span></figcaption></figure>
+          <figure class="shot"><div class="shot-holder"><span class="shot-hint">图片缺失<br>assets/medal-3.png</span><a class="shot-link" href="assets/medal-3.png" target="_blank" rel="noreferrer"><img src="assets/medal-3.png" alt="小程序码海报" loading="lazy" decoding="async" onerror="this.closest('.shot').classList.add('missing')"></a></div><figcaption>小程序码：已上线，扫码可直接体验<span class="zoom-hint">⤢ 看大图</span></figcaption></figure>
         </div>
       </div>
     </div>
@@ -313,7 +323,7 @@ conn.commit()</pre>
       </div>
       <div class="contact-card">
         <h3>WECHAT</h3>
-        <figure class="shot qr-slot" data-src="assets/wechat-qr.png" data-alt="微信二维码"><div class="shot-holder"><span class="shot-hint">待补充二维码<br>assets/wechat-qr.png</span></div><figcaption>扫码加微信</figcaption></figure>
+        <figure class="shot qr-slot"><div class="shot-holder"><span class="shot-hint">图片缺失<br>assets/wechat-qr.png</span><a class="shot-link" href="assets/wechat-qr.png" target="_blank" rel="noreferrer"><img src="assets/wechat-qr.png" alt="微信二维码" loading="lazy" decoding="async" onerror="this.closest('.shot').classList.add('missing')"></a></div><figcaption>扫码加微信</figcaption></figure>
       </div>
       <div class="contact-card">
         <h3>QUICK FACTS</h3>
@@ -570,15 +580,7 @@ if(qaIndex){
   if(listBtn)listBtn.addEventListener("click",()=>runCommandFromChip("qa"));
 }
 
-/* ---- 截图位：图片存在才显示，缺失时保留占位框，不出现破图 ---- */
-document.querySelectorAll(".shot[data-src]").forEach(fig=>{
-  const holder=fig.querySelector(".shot-holder");
-  const img=new Image();
-  img.loading="lazy";img.decoding="async";img.alt=fig.dataset.alt||"";
-  img.addEventListener("load",()=>{if(holder)holder.replaceChildren(img);fig.classList.add("filled")});
-  img.addEventListener("error",()=>fig.classList.add("missing"));
-  img.src=fig.dataset.src;
-});
+/* ---- 截图：图片标签直接写在 HTML 里，缺失时靠 onerror 显示占位框（不再由 JS 动态插入，避免懒加载在部分浏览器不触发） ---- */
 
 /* ---- 可选文件（简历 PDF）：未上传时按钮变灰并显示待上传，避免 HR 点到 404 ---- */
 document.querySelectorAll("[data-optional-file]").forEach(el=>{
