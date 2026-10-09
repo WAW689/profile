@@ -32,8 +32,47 @@ h1{font-size:clamp(42px,7vw,82px);line-height:1.04;letter-spacing:-.07em;margin:
 footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:11px}.footer-row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:none}
 #toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:var(--green);color:#041008;padding:10px 16px;font-size:12px;font-weight:bold;opacity:0;transition:.25s;z-index:20;pointer-events:none}#toast.show{opacity:1;transform:translate(-50%,0)}
+/* ---- 截图画廊 ---- */
+.shots-block{margin-bottom:34px}.shots-block:last-child{margin-bottom:0}
+.shots-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}.shots-head h3{margin:0;font-size:16px;color:#eaffef}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:14px}
+.shot{margin:0;border:1px solid var(--line);background:#071009;display:flex;flex-direction:column;overflow:hidden}
+.shot-holder{aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;background:repeating-linear-gradient(45deg,#08130d 0 10px,#0a1710 10px 20px)}
+.shot.filled .shot-holder{aspect-ratio:auto;padding:0;background:none}
+.shot img{display:block;width:100%;height:auto}
+.shot-hint{font-size:10px;line-height:1.7;color:#54805f;word-break:break-all}
+.shot figcaption{border-top:1px solid var(--line);padding:9px 11px;font-size:11px;color:var(--muted)}
+.shot.qr-slot{max-width:200px}
+/* ---- 面试问答索引 ---- */
+.qa-callout{border:1px dashed var(--green2);background:#08170f;padding:16px 18px;margin-bottom:16px}
+.qa-callout .qa-title{color:var(--green);font-size:13px;font-weight:900;letter-spacing:.06em}
+.qa-callout p{margin:7px 0 12px;font-size:12px;color:var(--muted)}
+.qa-callout code{color:var(--green);background:#0b2014;border:1px solid #1f5c38;padding:1px 5px;font-size:11px}
+.qa-index{display:flex;flex-wrap:wrap;gap:8px}
+.qa-chip{cursor:pointer;background:#09170e;border:1px solid #22683e;color:#bce9c7;font-size:11px;padding:6px 9px;text-align:left;transition:.2s}
+.qa-chip:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px)}
+.qa-chip.focus{border-style:solid;border-color:var(--amber);color:var(--amber)}
+/* ---- 局限与反思 ---- */
+.limits-list{margin:0;padding:0;list-style:none}
+.limits-list li{border-left:2px solid var(--amber);background:#12100a;padding:11px 14px;margin-bottom:10px;font-size:13px;color:#c8d6bd}
+.limits-list li b{color:var(--amber)}
+.limits-note{margin:16px 0 0;font-size:12px;color:var(--muted);border-top:1px dashed var(--line);padding-top:14px}
+/* ---- 联系区 ---- */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:14px;margin-bottom:16px}
+.contact-card{border:1px solid var(--line);background:linear-gradient(140deg,#0b1710f2,#07100bf2);padding:18px}
+.contact-card h3{margin:0 0 10px;font-size:12px;letter-spacing:.14em;color:var(--green)}
+.contact-card p{margin:5px 0;font-size:12px;color:#a5cbb0}
+.contact-card .big{font-size:14px;color:var(--fg);word-break:break-all}
+.btn.pending{opacity:.45;cursor:not-allowed;border-style:dashed;box-shadow:none}
+.btn.pending:hover{transform:none;box-shadow:none;background:#0b2014}
+/* ---- 项目决策与取舍 ---- */
+.decisions-title{font-size:10px;letter-spacing:.14em;color:var(--green);margin:16px 0 0;border-top:1px dashed var(--line);padding-top:12px}
+.decisions{margin:8px 0 0;padding:0;list-style:none}
+.decisions li{font-size:12px;line-height:1.6;color:#a5cbb0;padding:6px 0 0 14px;position:relative}
+.decisions li:before{content:"▸";position:absolute;left:0;color:var(--green2)}
+.decisions b{color:#d9f7e2;font-weight:700}
 @keyframes blink{50%{opacity:0}}@keyframes pulse{50%{opacity:.2}}@keyframes scan{0%,60%{left:-100%}100%{left:140%}}
-@media(max-width:760px){.navlinks{gap:10px}.navlinks a{font-size:10px}.hero{grid-template-columns:1fr;padding-top:55px;gap:30px;min-height:auto}.ascii-card{max-width:520px}.grid{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}.section{padding:38px 0}.metrics strong{font-size:21px}.nav{padding-inline:5vw}.brand{font-size:12px}}
+@media(max-width:760px){.navlinks{gap:10px;flex-wrap:wrap;justify-content:flex-end}.navlinks a{font-size:10px}.hero{grid-template-columns:1fr;padding-top:55px;gap:30px;min-height:auto}.ascii-card{max-width:520px}.grid{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.section{padding:38px 0}.metrics strong{font-size:21px}.nav{padding-inline:5vw}.brand{font-size:12px}.qa-callout{padding:14px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -41,7 +80,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
 <canvas id="matrix" aria-hidden="true"></canvas>
 <nav class="nav">
   <a class="brand" href="#home">MR://PROFILE</a>
-  <div class="navlinks"><a href="#projects">PROJECTS</a><a href="#about">ABOUT</a><a href="#skills">SKILLS</a><a href="#contact">CONTACT</a></div>
+  <div class="navlinks"><a href="#projects">PROJECTS</a><a href="#shots">SHOTS</a><a href="#about">ABOUT</a><a href="#limits">LIMITS</a><a href="#skills">SKILLS</a><a href="#contact">CONTACT</a></div>
 </nav>
 <main class="wrap">
   <section class="hero" id="home">
@@ -52,7 +91,8 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
       <p class="muted">上海对外经贸大学 · 信息管理与信息系统本科<br>关注 AI 应用落地、产品体验与工程实现。</p>
       <div class="actions">
         <a class="btn primary" href="#projects">[ 查看项目 ] <span>↘</span></a>
-        <button class="btn" id="copyEmail">[ 复制邮箱 ]</button>
+        <button class="btn" type="button" data-copy-email>[ 复制邮箱 ]</button>
+        <a class="btn" data-optional-file data-pending-label="[ 简历 PDF 待上传 ]" href="assets/resume-ma-rui.pdf" download>[ 下载简历 PDF ↓ ]</a>
         <a class="btn" href="https://github.com/WAW689" target="_blank" rel="noreferrer">[ GitHub ↗ ]</a>
       </div>
       <div class="metrics">
@@ -92,6 +132,12 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
         <h3>AI 友人</h3>
         <p>独立构建具备长期记忆与主动对话能力的 AI 应用，围绕主动性、消息打扰控制和调用成本持续迭代。</p>
         <ul><li>20+ 组场景测试，主动开口率从不足 20% 提升至 89%</li><li>设计静默时段、每日上限、连续发送上限、冷却期四层机制</li><li>落地 Token 成本账本；27 项测试验证零回归</li><li>真机测试并推动修复 10+ 项问题</li></ul>
+        <p class="decisions-title">KEY DECISIONS &amp; TRADE-OFFS</p>
+        <ul class="decisions">
+          <li><b>规则定边界、模型做决策</b>：静默时段、每日上限、连续发送上限、冷却期四条硬约束不交给模型，只让它在边界内判断"这次开口值不值得"，避免为了指标牺牲"不打扰"。</li>
+          <li><b>放弃的方案</b>：最早想让模型自主决定所有触发时机，结果打扰不可控、命中率也不到 20%；改成两段式后场景测试命中率才升到 89%。</li>
+          <li><b>回头看不够</b>：四层参数是手工调参，没有线上 A/B；89% 是自建用例口径，样本量小。</li>
+        </ul>
         <a class="project-link" href="https://github.com/WAW689/ai-friend-with-memory" target="_blank" rel="noreferrer">↗ github.com/WAW689/ai-friend-with-memory</a>
       </article>
       <article class="panel reveal">
@@ -99,6 +145,12 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
         <h3>网吧管理系统</h3>
         <p>从需求分析到数据库建模与业务查询，完成一个面向网吧日常业务的管理系统。</p>
         <ul><li>基于 Python + MySQL 完成系统开发</li><li>设计 8 张业务数据表并完成 ER 建模</li><li>使用 SQL 实现会员消费排行、商品销量统计、充值流水核对</li></ul>
+        <p class="decisions-title">KEY DECISIONS &amp; TRADE-OFFS</p>
+        <ul class="decisions">
+          <li><b>先把表设计对，再写业务</b>：先完成会员、商品、充值、消费流水等 8 张表的 ER 建模与关系设计，再落业务逻辑，避免边写边改表。</li>
+          <li><b>统计留在 SQL 里</b>：消费排行、销量统计、流水核对都用多表查询直接完成，不把数据拉到应用层再算——这正是数据类岗位的日常动作。</li>
+          <li><b>回头看不够</b>：只覆盖了课程范围内的核心链路，退款、重复充值、并发下余额一致性这类异常场景没有处理。</li>
+        </ul>
         <a class="project-link" href="https://github.com/WAW689/NetCafe-Management-System" target="_blank" rel="noreferrer">↗ github.com/WAW689/NetCafe-Management-System</a>
       </article>
       <article class="panel reveal">
@@ -106,13 +158,51 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
         <h3>勋章待办</h3>
         <p>微信小程序产品设计与 AI 辅助开发，以游戏化机制帮助用户管理任务并形成持续反馈。</p>
         <ul><li>独立完成需求分析与 PRD</li><li>覆盖任务管理、勋章激励、多人协作、标签管理</li><li>设计动态勋章稀有度机制</li><li>产品上线并完成首批真实用户验证</li></ul>
+        <p class="decisions-title">KEY DECISIONS &amp; TRADE-OFFS</p>
+        <ul class="decisions">
+          <li><b>先定激励，再定界面</b>：先把"完成任务之后用户得到什么"写进 PRD，再画任务列表与勋章体系，保证反馈闭环成立。</li>
+          <li><b>用稀有度替代固定徽章</b>：动态稀有度让长期坚持有递进感，而不是做完一次就结束。</li>
+          <li><b>放弃的方案</b>：没有做排行榜和社交玩法——冷启动阶段人少，反而会放大"没人用"的观感。</li>
+          <li><b>回头看不够</b>：首批真实用户只有两位数，稀有度参数缺少样本支撑，流失原因也没有系统收集。</li>
+        </ul>
         <a class="project-link" href="https://github.com/WAW689/Medal-Todo-MiniProgram" target="_blank" rel="noreferrer">↗ github.com/WAW689/Medal-Todo-MiniProgram</a>
       </article>
     </div>
   </section>
 
+  <section class="section" id="shots">
+    <div class="section-head"><span class="num">02 //</span><h2>界面与产物</h2></div>
+    <!-- 截图位已预留：把图片放进仓库 assets/ 目录，文件名与下方 data-src 一致即可自动显示；未提供的会显示占位框。 -->
+    <div class="panel reveal">
+      <div class="shots-block">
+        <div class="shots-head"><h3>AI 友人</h3><span class="muted">长期记忆 · 主动对话 · Token 成本账本</span></div>
+        <div class="gallery">
+          <figure class="shot" data-src="assets/ai-friend-1.png" data-alt="AI 友人主对话界面"><div class="shot-holder"><span class="shot-hint">待补充截图<br>assets/ai-friend-1.png</span></div><figcaption>主对话界面：长期记忆召回与消息流</figcaption></figure>
+          <figure class="shot" data-src="assets/ai-friend-2.png" data-alt="主动对话控制面板"><div class="shot-holder"><span class="shot-hint">待补充截图<br>assets/ai-friend-2.png</span></div><figcaption>四层消息控制：静默时段 / 每日上限 / 连带上限 / 冷却期</figcaption></figure>
+          <figure class="shot" data-src="assets/ai-friend-3.png" data-alt="Token 成本账本"><div class="shot-holder"><span class="shot-hint">待补充截图<br>assets/ai-friend-3.png</span></div><figcaption>Token 成本账本：按调用用途拆分消耗</figcaption></figure>
+          <figure class="shot" data-src="assets/ai-friend-demo.gif" data-alt="主动开口流程录屏"><div class="shot-holder"><span class="shot-hint">待补充录屏<br>assets/ai-friend-demo.gif</span></div><figcaption>主动开口完整流程（录屏，建议 ≤5MB）</figcaption></figure>
+        </div>
+      </div>
+      <div class="shots-block">
+        <div class="shots-head"><h3>网吧管理系统</h3><span class="muted">Python · MySQL · ER 建模</span></div>
+        <div class="gallery">
+          <figure class="shot" data-src="assets/netcafe-1.png" data-alt="8 张业务表 ER 图"><div class="shot-holder"><span class="shot-hint">待补充截图<br>assets/netcafe-1.png</span></div><figcaption>ER 图：会员 / 商品 / 充值 / 消费流水等 8 张业务表</figcaption></figure>
+          <figure class="shot" data-src="assets/netcafe-2.png" data-alt="业务统计查询结果"><div class="shot-holder"><span class="shot-hint">待补充截图<br>assets/netcafe-2.png</span></div><figcaption>SQL 产出：会员消费排行、商品销量统计、充值流水核对</figcaption></figure>
+        </div>
+      </div>
+      <div class="shots-block">
+        <div class="shots-head"><h3>勋章待办</h3><span class="muted">微信小程序 · PRD · 真实用户验证</span></div>
+        <div class="gallery">
+          <figure class="shot" data-src="assets/medal-1.png" data-alt="任务列表界面"><div class="shot-holder"><span class="shot-hint">待补充截图<br>assets/medal-1.png</span></div><figcaption>任务列表与勋章进度</figcaption></figure>
+          <figure class="shot" data-src="assets/medal-2.png" data-alt="勋章详情界面"><div class="shot-holder"><span class="shot-hint">待补充截图<br>assets/medal-2.png</span></div><figcaption>动态稀有度勋章详情</figcaption></figure>
+          <figure class="shot" data-src="assets/medal-3.png" data-alt="PRD 片段"><div class="shot-holder"><span class="shot-hint">待补充截图<br>assets/medal-3.png</span></div><figcaption>PRD 片段：激励规则与协作流程定义</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="about">
-    <div class="section-head"><span class="num">02 //</span><h2>关于我</h2></div>
+    <div class="section-head"><span class="num">03 //</span><h2>关于我</h2></div>
     <div class="two-col">
       <div class="panel reveal">
         <span class="tag">EDUCATION</span>
@@ -136,8 +226,24 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
     </div>
   </section>
 
+  <section class="section" id="limits">
+    <div class="section-head"><span class="num">04 //</span><h2>局限与反思</h2></div>
+    <div class="panel reveal">
+      <span class="tag">SELF-AUDIT · 我知道自己的边界</span>
+      <ul class="limits-list">
+        <li><b>89% 主动开口率是自建口径</b>：来自 20 多组人为构造的场景用例，不是线上大样本统计。要用线上数据验证，需要补主动消息回复率、次日留存、打扰投诉率三个指标。</li>
+        <li><b>Token 成本账本没有对账</b>：账本口径是我自己定义的调用归类，没有和平台账单做过交叉验证，只能用于内部功能取舍，不能当财务报表用。</li>
+        <li><b>27 项测试是自建安全网</b>：项目全程单人开发、没有代码评审，测试覆盖的是我能预想到的边界；预想不到的地方，测试同样挡不住。</li>
+        <li><b>RAG 只有概念理解</b>：没有在生产项目里落地过，LangChain / LlamaIndex / 向量数据库都还没实操，这也是我目前在补的部分。</li>
+        <li><b>小程序用户量很小</b>：累计两位数（首批 11 位）。它验证的是"需求 → PRD → 上线 → 真实反馈 → 迭代"的闭环，不是增长能力。</li>
+        <li><b>网吧管理系统是课程项目</b>：它证明的是数据基本功（ER 建模、多表查询、统计），不代表工程规模经验。</li>
+      </ul>
+      <p class="limits-note">把这些放在页面上，而不是只留在简历之外，是因为面试里被追问时，我更希望答案由我自己先说出来——知道边界在哪，才知道下一步该补什么。</p>
+    </div>
+  </section>
+
   <section class="section" id="skills">
-    <div class="section-head"><span class="num">03 //</span><h2>技能模块</h2></div>
+    <div class="section-head"><span class="num">05 //</span><h2>技能模块</h2></div>
     <div class="panel reveal">
       <h3>PROGRAMMING & DATABASE</h3><div class="skills"><span class="skill">Python</span><span class="skill">SQL</span><span class="skill">MySQL</span><span class="skill">Excel</span><span class="skill">GitHub</span></div>
       <h3 style="margin-top:24px">AI APPLICATION</h3><div class="skills"><span class="skill">LLM 应用</span><span class="skill">提示词设计</span><span class="skill">上下文管理</span><span class="skill">AI 辅助开发</span><span class="skill">Token 成本治理</span></div>
@@ -146,7 +252,31 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
   </section>
 
   <section class="section" id="contact">
-    <div class="section-head"><span class="num">04 //</span><h2>建立连接</h2></div>
+    <div class="section-head"><span class="num">06 //</span><h2>建立连接</h2></div>
+    <div class="contact-grid reveal">
+      <div class="contact-card">
+        <h3>EMAIL</h3>
+        <p class="big">maruidiyi@foxmail.com</p>
+        <p style="margin-top:12px"><button class="btn" type="button" data-copy-email>[ 复制邮箱 ]</button> <a class="btn" href="mailto:maruidiyi@foxmail.com">[ 发邮件 ]</a></p>
+      </div>
+      <div class="contact-card">
+        <h3>WECHAT</h3>
+        <figure class="shot qr-slot" data-src="assets/wechat-qr.png" data-alt="微信二维码"><div class="shot-holder"><span class="shot-hint">待补充二维码<br>assets/wechat-qr.png</span></div><figcaption>扫码加微信</figcaption></figure>
+      </div>
+      <div class="contact-card">
+        <h3>QUICK FACTS</h3>
+        <p>方向：AI 应用 / AI 产品实习</p>
+        <p>城市：上海 · 每周到岗 3–4 天</p>
+        <p>周期：6 个月以上 · 2028.06 毕业</p>
+        <p style="margin-top:12px"><a class="btn" data-optional-file data-pending-label="[ 简历 PDF 待上传 ]" href="assets/resume-ma-rui.pdf" download>[ 下载简历 PDF ↓ ]</a></p>
+      </div>
+    </div>
+    <div class="qa-callout reveal">
+      <div class="qa-title">// 10 道面试自问自答 · 点题目直接看回答</div>
+      <p>包含项目细节追问、成本与测试口径，以及我自己的局限反思。也可在下方终端直接输入 <code>qa</code>、<code>q1</code>–<code>q10</code>、<code>next</code>、<code>prev</code>、<code>help</code>。</p>
+      <div class="qa-index" id="qaIndex"></div>
+      <p style="margin:12px 0 0"><button class="btn" type="button" id="qaRandom">[ 随机来一题 ]</button> <button class="btn" type="button" id="qaList">[ 列出全部问题 ]</button></p>
+    </div>
     <div class="terminal reveal">
       <div class="term-head"><span>guest@marui:~/contact</span><span>● ● ●</span></div>
       <div class="term-body">
@@ -175,7 +305,7 @@ function drawMatrix(){if(canvas.dataset.disabled==="true"){requestAnimationFrame
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 const metricObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){const el=e.target;const target=Number(el.dataset.count);let n=0;const suffix=target===89?"%":target===10?"+":"";const timer=setInterval(()=>{n=Math.min(target,n+Math.max(1,Math.ceil(target/25)));el.textContent=n+suffix;if(n>=target)clearInterval(timer)},35);metricObserver.unobserve(el)}}),{threshold:.5});document.querySelectorAll("[data-count]").forEach(el=>metricObserver.observe(el));
 const toast=document.getElementById("toast");function showToast(t){toast.textContent=t;toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),1800)}
-document.getElementById("copyEmail").addEventListener("click",async()=>{try{await navigator.clipboard.writeText("maruidiyi@foxmail.com");showToast("邮箱已复制到剪贴板")}catch(e){showToast("邮箱：maruidiyi@foxmail.com")}});
+document.querySelectorAll("[data-copy-email]").forEach(btn=>btn.addEventListener("click",async()=>{try{await navigator.clipboard.writeText("maruidiyi@foxmail.com");showToast("邮箱已复制到剪贴板")}catch(e){showToast("邮箱：maruidiyi@foxmail.com")}}));
 const output=document.getElementById("terminalOutput");const form=document.getElementById("termForm"),cmd=document.getElementById("cmd");
 function printLine(text){const p=document.createElement("p");p.className="term-line";p.textContent=text;output.appendChild(p)}
 const interviewQA = {
@@ -364,6 +494,54 @@ function runCommand(raw) {
   printLine("命令不存在。输入 help 查看可用命令。");
 }
 form.addEventListener("submit",e=>{e.preventDefault();runCommand(cmd.value);cmd.value="";scrollTerminalToLatest()});
+
+/* ---- 面试问答索引：从 interviewQA 自动生成，标题始终与终端内容一致 ---- */
+const qaIndex=document.getElementById("qaIndex");
+function runCommandFromChip(command){
+  runCommand(command);
+  scrollTerminalToLatest();
+  const chip=qaIndex&&qaIndex.querySelector('.qa-chip[data-cmd="'+command+'"]');
+  if(chip){qaIndex.querySelectorAll(".qa-chip.focus").forEach(el=>el.classList.remove("focus"));chip.classList.add("focus")}
+  const terminal=document.querySelector(".terminal");
+  if(terminal){const y=window.scrollY+terminal.getBoundingClientRect().top-90;window.scrollTo({top:y,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})}
+}
+if(qaIndex){
+  Object.entries(interviewQA).forEach(([key,item])=>{
+    const b=document.createElement("button");
+    b.type="button";b.className="qa-chip";b.dataset.cmd=key;b.textContent=item.title;
+    qaIndex.appendChild(b);
+  });
+  qaIndex.addEventListener("click",e=>{const chip=e.target.closest(".qa-chip");if(chip)runCommandFromChip(chip.dataset.cmd)});
+  const randomBtn=document.getElementById("qaRandom");
+  if(randomBtn)randomBtn.addEventListener("click",()=>runCommandFromChip("q"+(1+Math.floor(Math.random()*10))));
+  const listBtn=document.getElementById("qaList");
+  if(listBtn)listBtn.addEventListener("click",()=>runCommandFromChip("qa"));
+}
+
+/* ---- 截图位：图片存在才显示，缺失时保留占位框，不出现破图 ---- */
+document.querySelectorAll(".shot[data-src]").forEach(fig=>{
+  const holder=fig.querySelector(".shot-holder");
+  const img=new Image();
+  img.loading="lazy";img.decoding="async";img.alt=fig.dataset.alt||"";
+  img.addEventListener("load",()=>{if(holder)holder.replaceChildren(img);fig.classList.add("filled")});
+  img.addEventListener("error",()=>fig.classList.add("missing"));
+  img.src=fig.dataset.src;
+});
+
+/* ---- 可选文件（简历 PDF）：未上传时按钮变灰并显示待上传，避免 HR 点到 404 ---- */
+document.querySelectorAll("[data-optional-file]").forEach(el=>{
+  const url=el.getAttribute("href");
+  if(!url)return;
+  fetch(url,{method:"HEAD"}).then(res=>{
+    if(!res.ok){
+      el.classList.add("pending");
+      el.removeAttribute("href");
+      el.setAttribute("aria-disabled","true");
+      el.setAttribute("title","文件尚未上传");
+      if(el.dataset.pendingLabel)el.textContent=el.dataset.pendingLabel;
+    }
+  }).catch(()=>{/* file:// 或离线时忽略，保持原样 */});
+});
 </script>
 </body>
 </html>
