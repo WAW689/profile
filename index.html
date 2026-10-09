@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07110d">
+<meta name="description" content="马蕊的个人简历与 AI 应用项目作品集">
+<title>MA RUI // SYSTEM PROFILE</title>
+<style>
+:root{--bg:#050b08;--panel:#09140f;--panel2:#0d1c14;--fg:#d5f8df;--muted:#7ba88a;--green:#63ff91;--green2:#21d96b;--line:#1b5733;--amber:#ffd166;--shadow:0 0 28px #1aff6620}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;background:var(--bg);color:var(--fg);font-family:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;line-height:1.65;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:5;opacity:.13;background:repeating-linear-gradient(0deg,transparent 0 3px,#65ff9110 4px 5px)}
+#matrix{position:fixed;inset:0;width:100%;height:100%;opacity:.10;z-index:-1}
+a{color:var(--green);text-decoration:none}a:hover{color:#fff;text-shadow:0 0 12px var(--green)}button,input{font:inherit}
+.nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:13px max(5vw,20px);background:#050b08dc;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.brand{font-weight:900;letter-spacing:.12em;color:var(--green)}.navlinks{display:flex;gap:22px;font-size:12px}.navlinks a{color:var(--muted)}.navlinks a:hover{color:var(--green)}
+.wrap{width:min(1100px,90vw);margin:auto}.hero{min-height:84vh;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:40px;padding:70px 0 50px}
+.eyebrow{color:var(--green);font-size:12px;letter-spacing:.2em}.eyebrow:before{content:"● ";animation:pulse 1.3s infinite}
+h1{font-size:clamp(42px,7vw,82px);line-height:1.04;letter-spacing:-.07em;margin:18px 0 10px;color:#f1fff4}h1 span{color:var(--green);text-shadow:0 0 24px #63ff9140}
+.typing{min-height:2em;color:var(--muted);font-size:clamp(14px,2vw,18px)}.cursor{display:inline-block;width:9px;height:1.1em;background:var(--green);vertical-align:middle;animation:blink .8s steps(2) infinite}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.btn{cursor:pointer;border:1px solid var(--green2);color:var(--green);background:#0b2014;padding:11px 16px;transition:.25s;display:inline-flex;gap:9px;align-items:center}.btn:hover{transform:translateY(-3px);box-shadow:0 0 22px #32ff7535;background:#10301c}.btn.primary{background:var(--green);color:#031108;font-weight:900}
+.ascii-card{border:1px solid var(--line);background:linear-gradient(145deg,#0c1b12e8,#06100bdc);padding:25px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.ascii-card:after{content:"";position:absolute;left:-100%;top:0;width:70%;height:100%;background:linear-gradient(90deg,transparent,#63ff9110,transparent);animation:scan 6s infinite}
+.ascii{white-space:pre;overflow:hidden;color:var(--green);font-size:clamp(7px,1vw,11px);line-height:1.35;text-align:center;text-shadow:0 0 10px #63ff9130}
+.status{display:flex;justify-content:space-between;border-top:1px dashed var(--line);padding-top:14px;margin-top:18px;font-size:11px;color:var(--muted)}.status strong{color:var(--green)}
+.section{padding:55px 0}.section-head{display:flex;align-items:center;gap:14px;margin-bottom:25px}.section-head .num{color:var(--green)}h2{font-size:clamp(22px,3vw,30px);margin:0;color:#f0fff4}.section-head:after{content:"";height:1px;background:var(--line);flex:1}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.panel{background:linear-gradient(140deg,#0b1710f2,#07100bf2);border:1px solid var(--line);padding:22px;position:relative;transition:transform .25s,border-color .25s,box-shadow .25s}.panel:hover{transform:translateY(-5px);border-color:var(--green2);box-shadow:var(--shadow)}.panel .tag{font-size:10px;letter-spacing:.12em;color:var(--green);border:1px solid #22683e;padding:3px 7px;display:inline-block;margin-bottom:12px}.panel h3{font-size:17px;margin:0 0 10px}.panel p,.panel li{font-size:13px;color:#a5cbb0}.panel ul{padding-left:18px}.project-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.project-icon{color:var(--green);font-size:20px}.project-link{display:inline-block;margin-top:8px;font-size:12px;word-break:break-all}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.metric{border-left:2px solid var(--green);padding:8px 12px;background:#0b1b11}.metric strong{display:block;font-size:26px;color:var(--green)}.metric span{font-size:11px;color:var(--muted)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}.timeline{border-left:1px solid var(--line);padding-left:20px}.timeline-item{position:relative;margin-bottom:24px}.timeline-item:before{content:"";position:absolute;width:8px;height:8px;border-radius:50%;background:var(--green);left:-25px;top:9px;box-shadow:0 0 12px var(--green)}.date{font-size:11px;color:var(--green);letter-spacing:.08em}.timeline h3{margin:4px 0}.muted{color:var(--muted);font-size:13px}
+.skills{display:flex;flex-wrap:wrap;gap:9px}.skill{border:1px dashed #276a40;padding:7px 10px;color:#bce9c7;background:#09170e;font-size:12px;transition:.2s}.skill:hover{border-style:solid;color:var(--green);transform:scale(1.04)}
+.terminal{background:#020604;border:1px solid #22683e;box-shadow:var(--shadow)}.term-head{padding:10px 14px;border-bottom:1px solid #163b25;color:var(--muted);font-size:11px;display:flex;justify-content:space-between}.term-body{padding:18px;font-size:13px;min-height:190px}.term-line{margin:0 0 8px;color:#b3d8bc}.prompt{color:var(--green)}.term-form{display:flex;gap:9px}.term-form label{color:var(--green)}.term-form input{background:transparent;border:0;outline:0;color:#effff1;min-width:0;flex:1}.term-form button{border:0;background:transparent;color:var(--green);cursor:pointer}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:11px}.footer-row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:none}
+#toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:var(--green);color:#041008;padding:10px 16px;font-size:12px;font-weight:bold;opacity:0;transition:.25s;z-index:20;pointer-events:none}#toast.show{opacity:1;transform:translate(-50%,0)}
+@keyframes blink{50%{opacity:0}}@keyframes pulse{50%{opacity:.2}}@keyframes scan{0%,60%{left:-100%}100%{left:140%}}
+@media(max-width:760px){.navlinks{gap:10px}.navlinks a{font-size:10px}.hero{grid-template-columns:1fr;padding-top:55px;gap:30px;min-height:auto}.ascii-card{max-width:520px}.grid{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}.section{padding:38px 0}.metrics strong{font-size:21px}.nav{padding-inline:5vw}.brand{font-size:12px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<canvas id="matrix" aria-hidden="true"></canvas>
+<nav class="nav">
+  <a class="brand" href="#home">MR://PROFILE</a>
+  <div class="navlinks"><a href="#projects">PROJECTS</a><a href="#about">ABOUT</a><a href="#skills">SKILLS</a><a href="#contact">CONTACT</a></div>
+</nav>
+<main class="wrap">
+  <section class="hero" id="home">
+    <div>
+      <div class="eyebrow">SYSTEM ONLINE · OPEN TO INTERNSHIP</div>
+      <h1>马蕊<span>.</span><br><span>AI × PRODUCT</span></h1>
+      <div class="typing"><span id="typed"></span><span class="cursor"></span></div>
+      <p class="muted">上海对外经贸大学 · 信息管理与信息系统本科<br>关注 AI 应用落地、产品体验与工程实现。</p>
+      <div class="actions">
+        <a class="btn primary" href="#projects">[ 查看项目 ] <span>↘</span></a>
+        <button class="btn" id="copyEmail">[ 复制邮箱 ]</button>
+        <a class="btn" href="https://github.com/WAW689" target="_blank" rel="noreferrer">[ GitHub ↗ ]</a>
+      </div>
+      <div class="metrics">
+        <div class="metric"><strong data-count="89">0%</strong><span>主动开口率 · 场景测试</span></div>
+        <div class="metric"><strong data-count="27">0</strong><span>测试项 · 零回归</span></div>
+        <div class="metric"><strong data-count="10">0+</strong><span>推动修复的问题</span></div>
+      </div>
+    </div>
+    <div class="ascii-card reveal">
+      <div class="eyebrow">// USER PROFILE RENDER</div>
+      <pre class="ascii">
+        .-----------------------.
+        |   M A R U I  / /      |
+        |-----------------------|
+        |      / \_____/ \      |
+        |     /  _     _  \     |
+        |    |  (o)   (o)  |    |
+        |    |      ^      |    |
+        |    |   \_____/   |    |
+        |     \  /|___|\  /     |
+        |      \/  ___  \/      |
+        |  [ GOOD BOY MODE ]    |
+        '-----------------------'
+          /|  CODE / TEST / SHIP
+         /_|___________________
+      </pre>
+      <div class="status"><span>STATUS: <strong>AVAILABLE</strong></span><span>LOC: SHANGHAI, CN</span></div>
+      <div class="status"><span>FOCUS: AI PRODUCT</span><span id="clock">--:--:--</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="section-head"><span class="num">01 //</span><h2>项目档案</h2></div>
+    <div class="grid">
+      <article class="panel reveal">
+        <div class="project-top"><span class="tag">AI APPLICATION · 2026.09—NOW</span><span class="project-icon">◉</span></div>
+        <h3>AI 友人</h3>
+        <p>独立构建具备长期记忆与主动对话能力的 AI 应用，围绕主动性、消息打扰控制和调用成本持续迭代。</p>
+        <ul><li>20+ 组场景测试，主动开口率从不足 20% 提升至 89%</li><li>设计静默时段、每日上限、连续发送上限、冷却期四层机制</li><li>落地 Token 成本账本；27 项测试验证零回归</li><li>真机测试并推动修复 10+ 项问题</li></ul>
+        <a class="project-link" href="https://github.com/WAW689/ai-friend-with-memory" target="_blank" rel="noreferrer">↗ github.com/WAW689/ai-friend-with-memory</a>
+      </article>
+      <article class="panel reveal">
+        <div class="project-top"><span class="tag">PYTHON + MYSQL · 2026.06</span><span class="project-icon">▦</span></div>
+        <h3>网吧管理系统</h3>
+        <p>从需求分析到数据库建模与业务查询，完成一个面向网吧日常业务的管理系统。</p>
+        <ul><li>基于 Python + MySQL 完成系统开发</li><li>设计 8 张业务数据表并完成 ER 建模</li><li>使用 SQL 实现会员消费排行、商品销量统计、充值流水核对</li></ul>
+        <a class="project-link" href="https://github.com/WAW689/NetCafe-Management-System" target="_blank" rel="noreferrer">↗ github.com/WAW689/NetCafe-Management-System</a>
+      </article>
+      <article class="panel reveal">
+        <div class="project-top"><span class="tag">MINI PROGRAM · 2026.01—03</span><span class="project-icon">◇</span></div>
+        <h3>勋章待办</h3>
+        <p>微信小程序产品设计与 AI 辅助开发，以游戏化机制帮助用户管理任务并形成持续反馈。</p>
+        <ul><li>独立完成需求分析与 PRD</li><li>覆盖任务管理、勋章激励、多人协作、标签管理</li><li>设计动态勋章稀有度机制</li><li>产品上线并完成首批真实用户验证</li></ul>
+        <a class="project-link" href="https://github.com/WAW689/Medal-Todo-MiniProgram" target="_blank" rel="noreferrer">↗ github.com/WAW689/Medal-Todo-MiniProgram</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="section-head"><span class="num">02 //</span><h2>关于我</h2></div>
+    <div class="two-col">
+      <div class="panel reveal">
+        <span class="tag">EDUCATION</span>
+        <div class="timeline">
+          <div class="timeline-item"><div class="date">2024.09 — 2028.06</div><h3>上海对外经贸大学</h3><p>信息管理与信息系统 · 本科</p><p class="muted">数据库原理与设计、数据仓库与数据挖掘、统计学、Python 数据分析基础、数据结构与算法、Java SE 程序设计。</p></div>
+        </div>
+      </div>
+      <div class="panel reveal">
+        <span class="tag">WORK PREFERENCE</span>
+        <h3>求职方向</h3>
+        <p>AI 应用 / AI 产品实习</p>
+        <p class="muted">意向城市：上海</p>
+        <p class="muted">可实习时间：即日起，每周 3–4 天，可持续 6 个月以上。</p>
+        <div class="tag">CORE STRENGTHS</div>
+        <p>能把 AI 能力转化为可运行的产品；具备需求分析、功能规划、测试验证和问题定位经验；能够使用 Python / SQL / MySQL 处理基础业务数据。</p>
+      </div>
+    </div>
+    <div class="panel reveal" style="margin-top:16px">
+      <span class="tag">HONORS</span>
+      <p>英语 CET-6　/　校级三等奖学金 ×2　/　校图书馆“拾光·智绘”未来学习空间创意作品征集一等奖（2025.10）</p>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="section-head"><span class="num">03 //</span><h2>技能模块</h2></div>
+    <div class="panel reveal">
+      <h3>PROGRAMMING & DATABASE</h3><div class="skills"><span class="skill">Python</span><span class="skill">SQL</span><span class="skill">MySQL</span><span class="skill">Excel</span><span class="skill">GitHub</span></div>
+      <h3 style="margin-top:24px">AI APPLICATION</h3><div class="skills"><span class="skill">LLM 应用</span><span class="skill">提示词设计</span><span class="skill">上下文管理</span><span class="skill">AI 辅助开发</span><span class="skill">Token 成本治理</span></div>
+      <h3 style="margin-top:24px">PRODUCT & DELIVERY</h3><div class="skills"><span class="skill">需求分析</span><span class="skill">产品设计</span><span class="skill">PRD</span><span class="skill">功能测试</span><span class="skill">产品迭代</span><span class="skill">问题定位</span><span class="skill">数据可视化</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="section-head"><span class="num">04 //</span><h2>建立连接</h2></div>
+    <div class="terminal reveal">
+      <div class="term-head"><span>guest@marui:~/contact</span><span>● ● ●</span></div>
+      <div class="term-body">
+        <p class="term-line"><span class="prompt">$</span> whoami</p>
+        <p class="term-line">AI 应用 / AI 产品方向实习生，喜欢把想法拆解、验证并交付为可运行的产品。</p>
+        <p class="term-line"><span class="prompt">$</span> contact --email</p>
+        <p class="term-line">maruidiyi@foxmail.com</p>
+        <p class="term-line"><span class="prompt">$</span> help <span style="color:#71957c"># 输入 qa 或 q1—q10 浏览面试问答</span></p>
+        <div id="terminalOutput"></div>
+        <form class="term-form" id="termForm"><label for="cmd">$</label><input id="cmd" autocomplete="off" spellcheck="false" placeholder="输入命令..." aria-label="终端命令"><button type="submit">ENTER ↵</button></form>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap footer-row"><span>© 2026 MA RUI // PERSONAL PORTFOLIO</span><span>BUILT WITH HTML · CSS · JS</span><a href="#home">BACK TO TOP ↑</a></div></footer>
+<div id="toast" role="status">已复制</div>
+<script>
+const roles=["把 AI 能力做成真正可用的产品。","从需求分析到测试交付，持续迭代。","AI APPLICATION · PRODUCT THINKING · ENGINEERING"];
+let roleIndex=0,charIndex=0,deleting=false;const typed=document.getElementById("typed");
+function typeLoop(){const s=roles[roleIndex];typed.textContent=s.slice(0,charIndex);if(!deleting){charIndex++;if(charIndex>s.length){deleting=true;setTimeout(typeLoop,1500);return}}else{charIndex--;if(charIndex<0){deleting=false;roleIndex=(roleIndex+1)%roles.length;charIndex=0}}setTimeout(typeLoop,deleting?28:55)}typeLoop();
+function updateClock(){document.getElementById("clock").textContent=new Date().toLocaleTimeString("en-GB",{hour12:false})}updateClock();setInterval(updateClock,1000);
+const canvas=document.getElementById("matrix"),ctx=canvas.getContext("2d");let w,h,cols,drops,fontSize=18,frameCount=0;
+function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;cols=Math.ceil(w/fontSize);drops=Array(cols).fill(1)}resize();addEventListener("resize",resize);
+const chars="01アイウエオカキクケコ<>[]{}/*+-=#$%";
+function drawMatrix(){if(canvas.dataset.disabled==="true"){requestAnimationFrame(drawMatrix);return}frameCount++;if(frameCount%3!==0){requestAnimationFrame(drawMatrix);return}ctx.fillStyle="rgba(5,11,8,0.18)";ctx.fillRect(0,0,w,h);ctx.fillStyle="rgba(70,190,105,0.58)";ctx.font=fontSize+"px monospace";for(let i=0;i<drops.length;i++){const c=chars[Math.floor(Math.random()*chars.length)];ctx.fillText(c,i*fontSize,drops[i]*fontSize);if(drops[i]*fontSize>h&&Math.random()>.992)drops[i]=0;drops[i]++}requestAnimationFrame(drawMatrix)}drawMatrix();
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+const metricObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){const el=e.target;const target=Number(el.dataset.count);let n=0;const suffix=target===89?"%":target===10?"+":"";const timer=setInterval(()=>{n=Math.min(target,n+Math.max(1,Math.ceil(target/25)));el.textContent=n+suffix;if(n>=target)clearInterval(timer)},35);metricObserver.unobserve(el)}}),{threshold:.5});document.querySelectorAll("[data-count]").forEach(el=>metricObserver.observe(el));
+const toast=document.getElementById("toast");function showToast(t){toast.textContent=t;toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),1800)}
+document.getElementById("copyEmail").addEventListener("click",async()=>{try{await navigator.clipboard.writeText("maruidiyi@foxmail.com");showToast("邮箱已复制到剪贴板")}catch(e){showToast("邮箱：maruidiyi@foxmail.com")}});
+const output=document.getElementById("terminalOutput");const form=document.getElementById("termForm"),cmd=document.getElementById("cmd");
+function printLine(text){const p=document.createElement("p");p.className="term-line";p.textContent=text;output.appendChild(p)}
+const interviewQA = {
+  q1: {
+    title: "Q1. 请做个自我介绍。",
+    answer: `面试官好，我是马蕊，上海对外经贸大学信息管理与信息系统专业大三，2028 年 6 月毕业。我投的是 AI 应用 / AI 产品方向。
+
+我的核心是“能把 AI 用成产品”。我独立用 AI 辅助开发做了一款带长期记忆和主动对话能力的 AI 应用：从产品构想、功能规划，到提示词设计、评测、真机测试、部署上线，全流程我自己走完，代码已经开源在 GitHub 上。其中两个我比较有代表性的工作：一是设计了四层消息控制机制，把长时间未交流场景下的主动开口率从不足 20% 提升到 89%；二是我发现项目对 API 花费完全不可见，就自己做了一套按调用用途拆分的 token 成本账本，配了 27 项测试验证零回归。
+
+另外我做过一个微信小程序《勋章待办》，独立写 PRD、设计勋章稀有度机制，产品已上线并面向本校同学做了真实用户验证；专业上我的数据库、SQL、Python 数据分析是基本盘，做过 8 张业务表的 ER 建模和业务统计。
+
+我每周可到岗 3-4 天，能持续 6 个月以上。希望能在贵司把 AI 产品的完整闭环做得更深。`,
+  },
+  q2: {
+    title: "Q2. “主动开口率从不足 20% 提升到 89%”，怎么定义、怎么测？",
+    answer: `“主动开口率”我定义为：在设定的“长时间未交流”场景下，系统应该主动发起对话、且实际发起成功的比例。
+
+测法是构造 20 多组场景用例，覆盖不同静默时长、不同话题上下文、不同时间点（含深夜、工作时段、连续多日未联系）。早期版本命中率不到 20%，主要问题是触发规则太刚性、提示词没有把“该不该开口”的判断交给模型。
+
+后来我把判断逻辑改成：规则给出边界（静默时长、每日上限、冷却期），由模型在边界内判断是否真的值得开口，再迭代提示词。最终 89% 是指这些用例中系统正确触发主动消息的比例。
+
+我也清楚这个数字的局限：它是自建场景用例的测试结果，不是线上大样本统计，样本量还不大。如果要在线上验证，我会加主动消息的回复率、次日留存和打扰投诉率三个指标。`,
+  },
+  q3: {
+    title: "Q3. 四层消息控制机制具体是什么？为什么需要四层？",
+    answer: `四层是：静默时段（比如深夜不打扰）、每日上限、连续发送上限、冷却期。
+
+做四层的原因是：AI 主动开口和打扰用户是一对天然矛盾。只有一层控制很容易失效——比如只设静默时段，模型在白天可能连续发很多条；只设每日上限，又挡不住半夜推送。
+
+所以我把它设计成“规则定边界、模型做决策”的两段式：规则负责硬约束，保证不会出现骚扰；模型在边界内判断这次开口有没有价值。这样既保住了 89% 的主动开口率，也不会让用户觉得被打扰。
+
+如果有线上数据，我会用“主动消息回复率 / 关闭推送率”来反过来调这四层的参数。`,
+  },
+  q4: {
+    title: "Q4. Token 成本账本解决什么问题？怎么做的？",
+    answer: `起因是我发现这个项目对 API 花多少钱完全不可见——因为用的是流式响应，usage 字段在返回里被丢掉了，等于账是黑盒。
+
+我的做法是按调用用途拆分成本：把每次调用归类（主动对话判断、正式生成、记忆压缩等），分别统计 token 消耗，再加两个维度：缓存命中率、以及峰谷分时的计价差异。
+
+最后配了 27 项测试验证改动没有回归。这套东西的价值是：做产品决策时能算清“这个功能值不值这个钱”，比如某个功能占了 40% 成本但贡献很小，就可以砍掉或换更便宜的模型。`,
+  },
+  q5: {
+    title: "Q5. 27 项测试怎么写？为什么强调零回归？",
+    answer: `这套测试覆盖的是成本账本和各层控制逻辑的边界条件——比如静默时段边界、每日上限刚好打满、冷却期内重复触发等。
+
+强调零回归是因为这个项目是我一个人在做，没有代码评审，所以我用测试当作自己的“安全网”：改提示词或改计数逻辑时，跑一遍测试就能确认没有把原本正常的行为改坏。这也是我从“写完能跑”转向“改了还敢发”的一个习惯变化。`,
+  },
+  q6: {
+    title: "Q6. 这个项目遇到的最大困难是什么？",
+    answer: `最大困难不是写代码，是定义“什么样的主动开口是对的”。因为 AI 主动说话没有标准答案：发得太少像死掉的工具，发得太多像骚扰。
+
+我的解法是把它变成一个可测的问题：先把“好”拆成可观察的行为（该开口的时候开口了、不该开口的时候没开口、不打扰），再构造 20 多组场景用例反复迭代提示词和规则，让每一次调整都有一个数字来验证，而不是凭感觉说“我觉得好多了”。`,
+  },
+  q7: {
+    title: "Q7. 微信小程序上线后有多少用户？怎么推广？",
+    answer: `目前累计用户是两位数（首批 11 位），推广方式是面向本校同学的定向推广——因为定位就是同学之间的任务协作和打卡场景。
+
+我更看重的是它验证了闭环：从需求分析、PRD、勋章稀有度机制设计，到测试、修 bug、收集真实用户反馈并迭代，我都走了一遍。规模小是实话，但“真实用户用过并反馈”和“只有 Demo”是两回事。`,
+  },
+  q8: {
+    title: "Q8. 网吧管理系统只是课程项目，它能说明什么？",
+    answer: `它主要证明我的数据基本功：8 张业务表（会员、商品、充值、消费流水等）的 ER 建模和关系设计，以及用 SQL 做多表查询和统计——会员消费排行、商品销量统计、充值流水核对。
+
+这些正是数据分析岗最日常的工作。加上我 AI 项目的对照，我的能力结构是“能建数据表、能写查询、也能把 AI 用在真实产品上”，而不是只会其中一块。`,
+  },
+  q9: {
+    title: "Q9. 怎么理解 Prompt Engineering？做过哪些调优？",
+    answer: `我的理解是：Prompt 工程不是“把话说得客气一点”，而是在模型的自由度和任务的确定性之间找平衡。
+
+我实操过的三类：一是角色与约束设定，把该不该开口的判断交给模型，但用四层规则把边界框死；二是结构化输出，让模型按固定格式返回结果，方便程序解析，减少后处理成本；三是用评测驱动迭代——先构造场景用例，改完提示词跑一遍看命中率变化，而不是凭感觉改。
+
+我目前的做法偏“单轮规则 + 上下文拼装”，还没做过系统性的 Few-shot 库或自动评测流水线，这块我很想在实际岗位里补上。`,
+  },
+  q10: {
+    title: "Q10. 了解 RAG 吗？",
+    answer: `概念上清楚：把外部知识切片、做向量化存进向量库，用户提问时先检索相关片段，再连同问题一起给模型生成答案，用来解决模型不知道私有知识、以及事实性错误的问题。
+
+关键环节我理解是切分粒度、检索召回准确率、以及把检索结果怎么拼进上下文。
+
+说实话我没有在生产项目里落地过 RAG，我的项目用的是“长期记忆 + 上下文管理”的思路：把重要信息沉淀下来，在需要时召回拼进上下文。原理上和 RAG 有相通的地方，但工具链（LangChain / LlamaIndex / 向量数据库）我还没实操过，正在补。`,
+  }
+};
+const commandHelp = [
+  "help       显示命令帮助",
+  "qa         列出面试问答（Q1–Q10）",
+  "q1 ... q10 查看对应问题与参考回答",
+  "next       查看下一题",
+  "prev       查看上一题",
+  "projects   查看项目概览",
+  "skills     查看技能栈",
+  "contact    查看联系邮箱",
+  "sudo hire marui  招聘彩蛋",
+  "neofetch   个人技能与项目概况",
+  "fortune    随机开发感悟",
+  "matrix     开启 / 关闭字符雨",
+  "clear      清空终端"
+].join("\n");
+let currentQuestion = 0;
+function printLine(text){const p=document.createElement("p");p.className="term-line";p.style.whiteSpace="pre-wrap";p.textContent=text;output.appendChild(p)}
+function scrollTerminalToLatest(){
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Wait for all newly appended lines to participate in layout before scrolling.
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    const target = output.lastElementChild || document.querySelector(".terminal");
+    if (!target) return;
+    const bottom = () => window.scrollY + target.getBoundingClientRect().bottom;
+    const desired = () => Math.max(0, bottom() - window.innerHeight + 32);
+    window.scrollTo({top: desired(), behavior: reduceMotion ? "auto" : "smooth"});
+    // Correct once more after smooth scrolling/layout settles, especially for long answers.
+    setTimeout(() => {
+      const latest = output.lastElementChild || document.querySelector(".terminal");
+      if (!latest) return;
+      const top = Math.max(0, window.scrollY + latest.getBoundingClientRect().bottom - window.innerHeight + 32);
+      window.scrollTo({top, behavior: reduceMotion ? "auto" : "smooth"});
+    }, 250);
+  }));
+}
+function showQuestion(key) {
+  const item = interviewQA[key];
+  if (!item) return;
+  currentQuestion = Number(key.slice(1));
+  printLine(item.title);
+  printLine(item.answer);
+}
+function runCommand(raw) {
+  const c = raw.trim().toLowerCase();
+  if (!c) return;
+  printLine("$ " + c);
+  if (c === "clear") { output.replaceChildren(); return; }
+  if (c === "help") { printLine(commandHelp); return; }
+  if (c === "qa") { printLine(Object.entries(interviewQA).map(([k,v]) => k.toUpperCase() + ". " + v.title.replace(/^Q\d+\.\s*/, "")).join("\n")); return; }
+  if (/^q(10|[1-9])$/.test(c)) { showQuestion(c); return; }
+  if (c === "next" || c === "prev") {
+    const n = Math.max(1, Math.min(10, currentQuestion + (c === "next" ? 1 : -1)));
+    showQuestion("q" + n); return;
+  }
+  const responses = {
+    projects: "项目概览：AI 友人（长期记忆、主动对话、Token 成本治理）｜网吧管理系统（Python + MySQL、8 张业务表）｜勋章待办（微信小程序、PRD、真实用户验证）。输入 q1—q10 查看面试题。",
+    skills: "Python · SQL · MySQL · LLM 应用 · 提示词设计 · 上下文管理 · PRD · 功能测试 · 产品迭代",
+    contact: "邮箱：maruidiyi@foxmail.com"
+  };
+  if (c === "sudo hire marui") {
+    printLine("╔══════════════════════════════════════╗");
+    printLine("║  HIRING REQUEST ACCEPTED ✓           ║");
+    printLine("║  候选人：马蕊                         ║");
+    printLine("║  方向：AI 应用 / AI 产品实习           ║");
+    printLine("║  到岗：每周 3–4 天                    ║");
+    printLine("║  实习周期：6 个月以上                 ║");
+    printLine("║  联系：maruidiyi@foxmail.com         ║");
+    printLine("╚══════════════════════════════════════╝");
+    return;
+  }
+  if (c === "neofetch") {
+    printLine("        / \\_____/ \\       MA RUI");
+    printLine("       /  _     _  \\      ─────────────────");
+    printLine("      |  (o)   (o)  |     ROLE   AI APP / PRODUCT");
+    printLine("      |      ^      |     SCHOOL 上海对外经贸大学");
+    printLine("       \\   \\___/   /      STACK  Python · SQL · MySQL");
+    printLine("        \\_________/       BUILDS 3 independent projects");
+    printLine("                           TESTS  27 regression checks");
+    printLine("                           STATUS OPEN TO INTERNSHIP");
+    return;
+  }
+  if (c === "fortune") {
+    const fortunes = [
+      "好的产品不是功能最多，而是解决了真正的问题。",
+      "先定义可观察的行为，再讨论模型是否变聪明。",
+      "没有测量，就很难知道迭代是否真的有效。",
+      "代码能运行是起点；改动之后仍然可靠才是交付。",
+      "AI 的价值不只在生成答案，也在融入真实工作流。",
+      "把模糊的问题拆成可以验证的小问题。"
+    ];
+    printLine("✦ " + fortunes[Math.floor(Math.random() * fortunes.length)]);
+    return;
+  }
+  if (c === "matrix") {
+    const canvas = document.getElementById("matrix");
+    const isOff = canvas.dataset.disabled !== "true";
+    canvas.dataset.disabled = isOff ? "true" : "false";
+    canvas.style.display = isOff ? "none" : "block";
+    printLine(isOff ? "字符雨已关闭。输入 matrix 可重新开启。" : "字符雨已开启。输入 matrix 可关闭。");
+    return;
+  }
+  if (c === "github") { printLine("https://github.com/WAW689"); window.open("https://github.com/WAW689", "_blank", "noopener,noreferrer"); return; }
+  if (responses[c]) { printLine(responses[c]); return; }
+  printLine("命令不存在。输入 help 查看可用命令。");
+}
+form.addEventListener("submit",e=>{e.preventDefault();runCommand(cmd.value);cmd.value="";scrollTerminalToLatest()});
+</script>
+</body>
+</html>
